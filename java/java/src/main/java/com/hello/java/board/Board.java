@@ -25,8 +25,9 @@ public class Board {
 
     private String content;
 
-    public Board(String title, String content) {
+    public Board(String title, String content, String name) {
         this.title = title;
         this.content = content;
+        this.name = name;
     }
 }
