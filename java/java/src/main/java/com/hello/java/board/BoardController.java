@@ -22,6 +22,15 @@ public class BoardController {
         return board;
     }
 
+    @PutMapping("/board")
+    public Optional<Board> update(@RequestParam(value = "id") Long id,
+                                  @RequestParam(value = "name", required = false) String name,
+                                  @RequestParam(value = "title", required = false) String title,
+                                  @RequestParam(value = "content", required = false) String content) {
+        Optional<Board> board = boardService.find(id);
+        return boardService.update(board, name, title, content);
+    }
+
 //    @DeleteMapping("/board")
 //    public Board delete()
 //    {

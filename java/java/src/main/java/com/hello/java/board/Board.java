@@ -1,7 +1,9 @@
 package com.hello.java.board;
 
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.apache.juli.DateFormatCache;
 
 import javax.persistence.Entity;
@@ -13,6 +15,7 @@ import java.time.LocalDateTime;
 
 @Entity
 @Getter
+@Setter
 @NoArgsConstructor
 public class Board {
     @Id
@@ -25,6 +28,7 @@ public class Board {
 
     private String content;
 
+    @Builder
     public Board(String title, String content, String name) {
         this.title = title;
         this.content = content;
