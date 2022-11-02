@@ -11,8 +11,10 @@ public class BoardController {
     public BoardService boardService;
 
     @PostMapping("/board")
-    public Board save(@RequestParam("name") String name) {
-        Board board = new Board("title", "content", name);
+    public Board save(@RequestParam("name") String name,
+                      @RequestParam(value = "title", required = false) String title,
+                      @RequestParam(value = "content", required = false) String content) {
+        Board board = new Board(name, title, content);
         return boardService.save(board);
     }
 
@@ -24,9 +26,9 @@ public class BoardController {
 
     @PutMapping("/board")
     public Optional<Board> update(@RequestParam(value = "id") Long id,
-                                  @RequestParam(value = "name", required = false) String name,
-                                  @RequestParam(value = "title", required = false) String title,
-                                  @RequestParam(value = "content", required = false) String content) {
+                                  @RequestParam(value = "name") String name,
+                                  @RequestParam(value = "title") String title,
+                                  @RequestParam(value = "content") String content) {
         Optional<Board> board = boardService.find(id);
         return boardService.update(board, name, title, content);
     }

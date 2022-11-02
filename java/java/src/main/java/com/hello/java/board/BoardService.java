@@ -22,18 +22,11 @@ public class BoardService {
         return repository.findById(id);
     }
 
-    public Optional<Board> update(Optional<Board> board, String name, String title, String content)
-    {
+    public Optional<Board> update(Optional<Board> board, String name, String title, String content) {
         Board newBoard = board.get();
-        if (name != null)
-            newBoard.setName(name);
-        if (title != null)
-            newBoard.setTitle(title);
-        if (content != null)
-            newBoard.setContent(content);
+        newBoard.update(name, title, content);
         repository.save(newBoard);
         return board;
     }
-
 
 }

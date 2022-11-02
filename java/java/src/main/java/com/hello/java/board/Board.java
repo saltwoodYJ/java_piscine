@@ -29,9 +29,15 @@ public class Board {
     private String content;
 
     @Builder
-    public Board(String title, String content, String name) {
+    public Board(String name, String title, String content) {
         this.title = title;
         this.content = content;
         this.name = name;
+    }
+
+    public void update(String name, String title, String content) {
+        this.setName(name);
+        this.setTitle(title);
+        this.setContent(content);
     }
 }
