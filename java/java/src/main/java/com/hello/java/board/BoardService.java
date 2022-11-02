@@ -30,7 +30,6 @@ public class BoardService {
         return board;
     }
 
-
     public void delete(Long id) {
         repository.deleteById(id);
     }
