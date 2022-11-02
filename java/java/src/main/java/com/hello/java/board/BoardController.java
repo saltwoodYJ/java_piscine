@@ -33,10 +33,9 @@ public class BoardController {
         return boardService.update(board, name, title, content);
     }
 
-//    @DeleteMapping("/board")
-//    public Board delete()
-//    {
-//
-//    }
+    @DeleteMapping("/board")
+    public void delete(Long id) {
+        boardService.delete(id);
+    }
 
 }

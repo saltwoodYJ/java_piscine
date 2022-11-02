@@ -2,6 +2,7 @@ package com.hello.java.board;
 
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.DeleteMapping;
 
 import java.util.Optional;
 
@@ -27,6 +28,11 @@ public class BoardService {
         newBoard.update(name, title, content);
         repository.save(newBoard);
         return board;
+    }
+
+
+    public void delete(Long id) {
+        repository.deleteById(id);
     }
 
 }
