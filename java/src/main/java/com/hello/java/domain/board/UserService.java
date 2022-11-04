@@ -14,13 +14,17 @@ import java.util.List;
 public class UserService {
     private final UserRepository userRepository;
 
-    public boolean isNotExist(String userName)
-    {
+    public UserListResponseDto findUserAll(){
         List<User> userList = userRepository.findAll();
         UserListResponseDto userListResponseDto = UserListResponseDto.builder()
                 .userList(userList)
                 .userCount(userList.size())
                 .build();
+        return userListResponseDto;
+    }
+    public boolean isNotExist(String userName)
+    {
+        List<User> userList = findUserAll().getUserList();
         for (User user : userList) {
             if (user.getUserName().equals(userName))
                 return false;
