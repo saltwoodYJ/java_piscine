@@ -22,7 +22,6 @@ public class Board extends BaseTimeEntity {
     private String content;
 //    @Column(name = "createDate")
 //    private LocalDateTime createDate;
-
     @Column
     private Long views;
     @Column
