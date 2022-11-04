@@ -28,9 +28,11 @@ class BoardControllerTest {
     public void findOne() {
 
         //given
-        Board test1 = new Board();
-//        test1.setTitle("hi");
-//        test1.setContent("hello");
+        Board test1 = Board.builder()
+                .title("42")
+                .content("GG")
+                .tag("Project")
+                .build();
 
         //when
         Long id = boardRepository.save(test1).getId();
@@ -55,13 +57,15 @@ class BoardControllerTest {
     @Test
     public void updateBoard() {
         //Given
-        Board test1 = new Board();
-//        test1.setTitle("42");
-//        test1.setContent("GG");
+        Board test1 = Board.builder()
+                .title("42")
+                .content("GG")
+                .tag("Project")
+                .build();
         Long id1 = boardRepository.save(test1).getId();
 
         //when
-        test1.update("Ping", "Pong");
+        test1.update("Ping", "Pong", "Pang");
 
 
         //then
