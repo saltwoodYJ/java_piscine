@@ -1,5 +1,6 @@
-package com.hello.java;
+package com.hello.java.domain.board;
 
+import com.hello.java.domain.board.Board;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface BoardRepository extends JpaRepository<Board, Long> {
