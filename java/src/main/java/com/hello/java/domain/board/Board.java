@@ -27,24 +27,27 @@ public class Board extends BaseTimeEntity {
     private Long views;
     @Column
     private Long fame;
+    @Column
+    private String tag;
 
     @Builder
-
-    public Board(String title, String content) {
+    public Board(String title, String content, String tag) {
+        this.tag = tag;
         this.title = title;
         this.content = content;
         this.views = 0L;
         this.fame = 0L;
     }
 
-    public void update(String title, String content) {
+    public void update(String title, String content, String tag) {
         this.title = title;
         this.content = content;
+        this.tag = tag;
     }
 
     public Long viewUp()
     {
-        return this.views = this.views - 1L;
+        return this.views = this.views + 1L;
     }
 
     public Long fameUp()

@@ -11,17 +11,19 @@ public class BoardUpdateDto {
 
     private String title;
     private String content;
-
+    private String tag;
     @Builder
-    public BoardUpdateDto(String title, String content) {
+    public BoardUpdateDto(String title, String content, String tag) {
         this.title = title;
         this.content = content;
+        this.tag = tag;
     }
 
     public Board toEntity() {
         return Board.builder()
                 .title(title)
                 .content(content)
+                .tag(tag)
                 .build();
     }
 }

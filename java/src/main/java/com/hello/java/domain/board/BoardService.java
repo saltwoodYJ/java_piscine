@@ -32,7 +32,7 @@ public class BoardService {
     @Transactional
     public Long update(Long id, BoardUpdateDto boardUpdateDto) {
         Board board = findOne(id).orElseThrow();
-        board.update(boardUpdateDto.getTitle(), boardUpdateDto.getContent());
+        board.update(boardUpdateDto.getTitle(), boardUpdateDto.getContent(), boardUpdateDto.getTag());
         return id;
     }
 

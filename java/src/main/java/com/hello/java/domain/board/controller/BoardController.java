@@ -15,8 +15,9 @@ public class BoardController {
 
     @PostMapping("/board")
     public Board saveBaord(@RequestParam("title") String title,
-                           @RequestParam("content") String content) {
-        Board board = new Board(title, content);
+                           @RequestParam("content") String content,
+                           @RequestParam("tag") String tag) {
+        Board board = new Board(title, content, tag);
         return boardService.save(board);
     }
 
