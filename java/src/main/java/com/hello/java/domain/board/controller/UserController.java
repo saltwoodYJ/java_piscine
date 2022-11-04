@@ -15,8 +15,8 @@ public class UserController {
     UserService userService;
 
     @PostMapping("/user")
-    public boolean addUser(@RequestParam("userId") String userId, @RequestParam("password") String password) {
-        return userService.addUser(userId, password);
+    public boolean addUser(@RequestParam("userName") String userName, @RequestParam("password") String password) {
+        return userService.addUser(userName, password);
     }
 
     @GetMapping("/user")
