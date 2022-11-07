@@ -37,5 +37,26 @@ public class UserControllerTest {
 
     }
 
+    @Test
+    public void 유저중복체크(){
+        //given
+        String name = "name";
+        String password = "password";
+        User userAdd = User.builder()
+                .userName(name)
+                .password(password)
+                .build();
+        userRepository.save(userAdd);
+
+        //when
+        boolean not = userService.isNotExist(name);
+        boolean is = userService.isNotExist("not");
+
+        //then
+        Assertions.assertThat(false).isEqualTo(not);
+        Assertions.assertThat(true).isEqualTo(is);
+
+    }
+
 
 }
