@@ -31,8 +31,19 @@ public class UserService {
         }
         return true;
     }
+
+    public User findUserOne(String userName)
+    {
+        List<User> userList = findUserAll().getUserList();
+        for (User user : userList) {
+            if (user.getUserName().equals(userName))
+                return user;
+        }
+        return null;
+    }
+
     public boolean addUser(String userName, String password) {
-        if (isNotExist(userName)) {
+        if (findUserOne(userName) == null) {
             userRepository.save(User.builder()
                     .userName(userName)
                     .password(password)
@@ -41,5 +52,4 @@ public class UserService {
         }
         return false;
     }
-
 }
