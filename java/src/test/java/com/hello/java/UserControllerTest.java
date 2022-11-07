@@ -58,5 +58,39 @@ public class UserControllerTest {
 
     }
 
+    @Test
+    public void 유저리스트찾기(){
+        String name1 = "name1";
+        String password1 = "password";
+        User userAdd1 = User.builder()
+                .userName(name1)
+                .password(password1)
+                .build();
+        String name2 = "name2";
+        String password2 = "password";
+        User userAdd2 = User.builder()
+                .userName(name2)
+                .password(password2)
+                .build();
+        userRepository.save(userAdd1);
+        userRepository.save(userAdd2);
+        UserListResponseDto userListResponseDto = UserListResponseDto.builder()
+                .userList(userRepository.findAll())
+                .userCount(userRepository.findAll().size())
+                .build();
+
+        //when
+        UserListResponseDto getDto = userService.findUserAll();
+
+        //then
+        Assertions.assertThat(userListResponseDto.getUserCount()).isEqualTo(getDto.getUserCount());
+        Assertions.assertThat(userListResponseDto.getUserList().get(1).getUserName())
+                .isEqualTo(getDto.getUserList().get(1).getUserName());
+        Assertions.assertThat(userListResponseDto.getUserList().get(1).getPassword())
+                .isEqualTo(getDto.getUserList().get(1).getPassword());
+
+
+    }
+
 
 }
